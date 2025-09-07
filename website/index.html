@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>KING PHOENIX LOAN INVESTMENT</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="KING PHOENIX LOAN INVESTMENT - Professional lending solutions in Zambia. Apply for a loan or get in touch today.">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+      .hidden { display: none !important; }
+      .currency { font-weight: bold; color: #c0392b; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-flex">
+            <div class="logo">
+                <img src="logo.png" alt="King Phoenix Logo" style="height:40px;vertical-align:middle;">
+                <span class="brand">KING PHOENIX LOAN INVESTMENT</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#enquiry">Apply</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#" id="showAdminBtn" style="display:none;">Admin</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <h1>Welcome to KING PHOENIX LOAN INVESTMENT</h1>
+            <p>
+                <strong>Your trusted partner for fast, flexible, and secure lending solutions in Zambia.</strong>
+            </p>
+            <a href="#enquiry" class="btn">Apply for a Loan</a>
+        </div>
+    </header>
+
+    <section id="about" class="about container">
+        <h2>About Us</h2>
+        <p>
+            <strong>KING PHOENIX LOAN INVESTMENT</strong> is dedicated to empowering individuals and businesses with accessible and transparent loans. We offer speedy approvals, competitive rates, and personalized support.
+        </p>
+        <div class="card">
+            <ul>
+                <li>Personal &amp; Business Loans</li>
+                <li>Competitive Interest Rates</li>
+                <li>Flexible Repayment Plans</li>
+                <li>Quick Approval Process</li>
+                <li>Professional Advice & Customer Support</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="enquiry" class="loan-enquiry container card">
+        <h2>Loan Application</h2>
+        <form id="enquiryForm" autocomplete="off">
+            <div class="form-group">
+                <label for="fullName">Full Name <span style="color:#c0392b;">*</span></label>
+                <input type="text" id="fullName" name="fullName" autocomplete="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email <span style="color:#c0392b;">*</span></label>
+                <input type="email" id="email" name="email" autocomplete="email" required>
+            </div>
+            <div class="form-group">
+                <label for="amount">Loan Amount <span style="color:#c0392b;">*</span></label>
+                <input type="number" id="amount" name="amount" min="100" step="50" required placeholder="e.g. 5000">
+                <span class="currency">K</span>
+            </div>
+            <div class="form-group">
+                <label for="purpose">Purpose of Loan <span style="color:#c0392b;">*</span></label>
+                <textarea id="purpose" name="purpose" rows="2" required></textarea>
+            </div>
+            <button type="submit" class="btn">Submit Application</button>
+        </form>
+        <div id="enquirySuccess" class="success-message" style="display:none;">
+            Thank you for your application. We will contact you soon!
+        </div>
+    </section>
+
+    <section id="admin-reply" class="admin-reply container card hidden">
+        <h2>Admin Panel &ndash; Reply to Enquiries</h2>
+        <form id="replyForm">
+            <div class="form-group">
+                <label for="clientEmail">Client Email <span style="color:#c0392b;">*</span></label>
+                <input type="email" id="clientEmail" name="clientEmail" required>
+            </div>
+            <div class="form-group">
+                <label for="replyMsg">Reply Message <span style="color:#c0392b;">*</span></label>
+                <textarea id="replyMsg" name="replyMsg" rows="3" required></textarea>
+            </div>
+            <button type="submit" class="btn admin-btn">Send Reply</button>
+        </form>
+        <div id="replySuccess" class="success-message" style="display:none;">
+            Reply sent successfully (demo only).
+        </div>
+        <p class="admin-note">
+            <b>Note:</b> This panel is for demonstration only. For secure admin access and real email replies, please implement server-side authentication and mail functions.
+        </p>
+        <button class="btn" onclick="hideAdminPanel()" style="margin-top:9px;">Hide Panel</button>
+    </section>
+
+    <section id="contact" class="contact-section container card">
+        <h2>Contact Us</h2>
+        <p><b>Email:</b> <a href="mailto:blessingsmkandawire413@gmail.com">blessingsmkandawire413@gmail.com</a></p>
+        <p>
+            <b>Phone:</b> 
+            <a href="tel:0968949859">0968949859</a> &nbsp;|&nbsp; 
+            <a href="tel:0771901352">0771901352</a>
+        </p>
+        <p>
+            <b>Location:</b> Lusaka, Zambia<br>
+            <b>Working Hours:</b> Mon-Fri, 08:00 &ndash; 17:00 CAT
+        </p>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            &copy; 2025 KING PHOENIX LOAN INVESTMENT &middot; Lusaka, Zambia
+        </div>
+    </footer>
+
+    <script>
+    // Show admin panel with a password prompt (client-only, demo)
+    function showAdminPanel() {
+        const password = prompt("Enter admin password:");
+        // For demo, password is 'kingphoenix2025'
+        if (password === "kingphoenix2025") {
+            document.getElementById('admin-reply').classList.remove('hidden');
+            window.scrollTo({ top: document.getElementById('admin-reply').offsetTop - 60, behavior: 'smooth' });
+        } else if (password !== null) {
+            alert("Incorrect password.");
+        }
+    }
+    function hideAdminPanel() {
+        document.getElementById('admin-reply').classList.add('hidden');
+    }
+    // Show Admin button only for owner (very basic; best practice is server-side check)
+    document.addEventListener('DOMContentLoaded', function() {
+        // For demonstration, always show admin button
+        document.getElementById('showAdminBtn').style.display = 'inline-block';
+        document.getElementById('showAdminBtn').addEventListener('click', function(e){
+            e.preventDefault();
+            showAdminPanel();
+        });
+    });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
